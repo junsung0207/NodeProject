@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../header"); %>
+  <link rel="stylesheet" href="/stylesheets/test.css">
+
+  <style>
+    
+  </style>
+</head>
+
+
+<body>
+  <%- include("../menu"); %>
+
+
+
+  <div id="createForm">
+
+    <div class="form-wrap">
+
+      <%- include("../booklist"); %>
+
+      <button class="top-button" onclick="topFunction();">TOP</button>
+
+
+    </div>
+
+  </div>
+
+  <%- include("../footer"); %>
+  <script>
+    function topFunction() {
+
+      $('html, body').animate({
+        scrollTop: 0
+      }, 'slow');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("header"); %>
+  <style>
+    #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -4;
+      filter: brightness(40%);
+    }
+
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+
+      color: white;
+      font-family: 'Gugi', cursive;
+      font-weight: 700;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .Intro h1 {
+      font-size: 46pt;
+    }
+
+    .Intro p {
+      font-size: 14pt;
+      margin-top: 50px;
+    }
+
+    .start-button {
+      bottom: 30%;
+      position: absolute;
+      min-width: 160px;
+
+      border: 3px solid white;
+      border-radius: 300px;
+      background: none;
+      transition: 0.3s;
+      color: white;
+      padding: 10px 0;
+    }
+
+    .start-button:hover {
+      background-color: white;
+      color: black;
+      transition: 0.3s;
+    }
+
+
+    .mainer {
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      height: 700px;
+      background-color: white;
+      padding: 0 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      font-family: 'Nanum-Gothic', sans-serif;
+    }
+
+
+
+    .mainer-line {
+      width: 60%;
+      height: 2px;
+      background-color: gray;
+      border: none;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+
+<body>
+  <%- include("menu"); %>
+
+  <!--Main Layout-->
+  <main>
+
+    <div class="container">
+      <div class="Intro">
+        <h1>아래 : 아</h1>
+
+        <p>고전시가가 많이 어려우신 당신을 위한 서비스</p>
+      </div>
+      <button class="start-button" OnClick="location.href ='/api/play/test'">
+        let's start
+      </button>
+    </div>
+
+    <div class="mainer">
+      <div class="mainer-content">
+        <h2>Q. 고전 시가는 무엇인가요?</h2>
+        <div class="mainer-line"></div>
+        <p>고전시가는 부족 국가 시대부터 조선 시대까지 전해 내려오는 노래 형식의 작품입니다. <br>
+          우리가 흔히 알고 있는 소설, 시와는 조금 다른 개념의 장르이며, 옛 국어 문법을 따르고 있어, 해석하는데에 있어서도<br>
+          쉽지가 않아 많은 수험생들의 발목을 잡고 있습니다</p>
+      </div>
+
+      <div class="mainer-content">
+        <h2>Q. 이 사이트를 어떻게 활용해야 하나요?</h2>
+        <div class="mainer-line"></div>
+        <p>작품 목록에서 여러 작품을 보고 공부한뒤, 문장 카드 페이지로 넘어가 고전 시가의 각 구절을 공부할 수 있습니다. <br>
+          참고로 문장카드는 사용자가 직접 만들 수 있습니다. 여러 작품을 토대로 만들어보세요!</p>
+      </div>
+      <div class="footer-contain">
+        Made in Korea
+      </div>
+    </div>
+
+
+
+    <video autoplay muted loop id="myVideo">
+      <source src="/images/printing.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </main>
+  <!--Main Layout-->
+
+  <%- include("footer"); %>
+</body>
+
+</html>

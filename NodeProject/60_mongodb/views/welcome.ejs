@@ -1,0 +1,275 @@
+<html>
+
+<head>
+    <%- include("header"); %>
+    <link rel="stylesheet" href="/stylesheets/welcome.css">
+
+    <style>
+        .signup-button {
+            border-width: 3px;
+            border-style: solid;
+            border-color: rgb(107, 7, 0);
+            background: none;
+
+            padding: 10px 100px;
+            font-family: "Nanum Gothic", serif;
+            color: black;
+            transition: 0.3s;
+        }
+
+        .signup-button:hover {
+            background: rgb(107, 7, 0);
+            color: white;
+            transition: 0.3s;
+        }
+
+        .kakao-error {
+            opacity: 0;
+            width: 100%;
+            height: auto;
+            position: fixed;
+
+            top: 36%;
+            display: flex;
+            transition: 0.2s;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .kakao-error p {
+            background-color: rgba(66, 66, 66, 0.795);
+            padding: 20px 50px;
+            color: white;
+            font-family: 'Nanum Gothic', sans-serif;
+            cursor: default;
+            border-radius: 100px;
+            border: 2px solid white;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+
+
+<body>
+    <main>
+        <div class="background"></div>
+        <div id="kakao-error" class="kakao-error" onclick="kakaoerrorclose();">
+            <p id="kakao-error-p">아직 지원하지 않아요!</p>
+        </div>
+        <div class="container">
+            <div OnClick="location.href ='/'" class="icon"></div>
+            <div class="arae">
+                <span>Arae : a<br></span>
+                <span>고전시가를 완벽하게 다루기 위한</span>
+            </div>
+            <button class="signup" id="arae_login">
+                <div class="signup_icon"></div>
+                <span class="signup_text" onclick="show_signup()">Sign up with Arae : a</span>
+            </button>
+            <button class="signup" id="kakao_login" onclick="kakaoerror();">
+                <div class="signup_icon"></div>
+                <span class="signup_text">Sign up with KaKao</span>
+            </button>
+            <button class="signin" OnClick="ScrollToBottom()">Wanna Login?</button>
+        </div>
+        <div class="notice">
+            <div> : 국보 제 217호<br>정선의 금강전도</div>
+        </div>
+
+        <!-- signup start-->
+
+        <section class="form-elegant" id="form-elegant">
+
+            <!--Form without header-->
+            <div class="card">
+
+                <div class="card-body mx-4">
+                    <form id="loginForm" class="text-center" action="#!">
+                        <!--Header-->
+                        <div class="text-center">
+                            <h3 class="dark-grey-text mb-5"><strong>Sign in</strong></h3>
+                        </div>
+
+                        <!--Body-->
+                        <div class="md-form">
+                            <input type="email" id="email" class="form-control">
+                            <label for="email">Your email</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" id="password" class="form-control">
+                            <label for="password">Your password</label>
+
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign
+                                in</button>
+                        </div>
+                        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> Protect
+                            by YJS
+                        </p>
+
+
+                    </form>
+
+
+
+                </div>
+
+                <!--Footer-->
+
+            </div>
+            <!--/Form without header-->
+
+        </section>
+        <!-- signup end -->
+
+
+
+
+        <!--Section: Live preview-->
+        <section class="form-light" id="form-light">
+
+            <!--Form without header-->
+            <div class="card">
+
+                <div class="card-body mx-4">
+
+                    <form id="signupForm" class="text-center" action="#!">
+                        <!--Header-->
+                        <div class="text-center">
+                            <h3 class="pink-text mb-5"><strong>Sign up</strong></h3>
+                        </div>
+
+                        <!--Body-->
+                        <div class="md-form">
+                            <input type="text" id="name2" class="form-control">
+                            <label for="name">What's your name?</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="text" id="email2" class="form-control">
+                            <label for="email">Your email</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" id="password2" class="form-control">
+                            <label for="password">Your password</label>
+                        </div>
+
+
+                        <div class="signup-button-container">
+                            <button class="signup-button">
+                                SIGN UP
+                            </button>
+                        </div>
+                        <!--Grid row-->
+                    </form>
+
+                </div>
+
+                <!--Footer-->
+                <div class="footer pt-3 mdb-color lighten-3">
+
+                    <div class="row d-flex justify-content-center">
+                        <p class="font-small white-text mb-2 pt-3">Protect by YJS</p>
+                    </div>
+                    <div style="height:30px;"></div>
+
+
+
+                </div>
+
+            </div>
+            <!--/Form without header-->
+
+        </section>
+        <!--Section: Live preview-->
+    </main>
+
+    <!-- <footer>
+        copyright YJS. all rights reserved
+    </footer> -->
+
+    <%- include("footer"); %>
+    <script>
+        var kakao_error = document.getElementById("kakao-error");
+        var kakao_error_p = document.getElementById("kakao-error-p");
+
+        function kakaoerror() {
+            kakao_error.style.opacity = '1';
+            kakao_error_p.style.cursor = 'pointer';
+        }
+
+        function kakaoerrorclose() {
+            kakao_error.style.opacity = '0';
+            kakao_error_p.style.cursor = 'default';
+        }
+
+        var signup_block = document.getElementById("form-light");
+        var signin_block = document.getElementById("form-elegant");
+
+        function ScrollToBottom() {
+            signup_block.style.display = 'none';
+            signin_block.style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function show_signup() {
+
+            signup_block.style.display = 'block';
+            signin_block.style.display = 'none';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        // sign in
+        $(function () {
+            $("#loginForm").submit((event) => {
+                event.preventDefault();
+                const email = $("#email").val();
+                const password = $("#password").val();
+
+                $.ajax({
+                    url: "/api/user/login",
+                    type: "POST",
+                    data: {
+                        email,
+                        password
+                    },
+                }).done(() => {
+                    location.href = "/api/index";
+                }).fail((request, status, error) => {
+                    alert(request.responseText);
+                });
+            });
+        });
+
+        //sign up
+        $(function () {
+            $("#signupForm").submit((event) => {
+                event.preventDefault();
+                const name = $("#name2").val();
+                const email = $("#email2").val();
+                const password = $("#password2").val();
+
+                $.ajax({
+                    url: "/api/user/signup",
+                    type: "POST",
+                    data: {
+                        name,
+                        email,
+                        password
+                    },
+                }).done(() => {
+                    //alert("회원가입 성공");
+                    location.href = "/";
+                }).fail((request, status, error) => {
+                    alert(request.responseText);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

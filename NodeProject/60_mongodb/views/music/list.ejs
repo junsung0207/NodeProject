@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../header"); %>
+
+  <style>
+    .name_text_container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 8pt;
+      color: #9A9A9A;
+    }
+
+    #card_image {
+      background-color: black;
+      opacity: 0.5;
+      height: 140px;
+      background-size: cover;
+      background-position: center;
+    }
+
+
+    .card {
+      -webkit-box-shadow: 0px 6px 15px -5px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 6px 15px -5px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 6px 15px -5px rgba(0, 0, 0, 0.75);
+      margin: 0 20px;
+
+      height: 500px;
+
+    }
+
+    #create_button {
+      width: 100px;
+      transition: 0.3s;
+      background-color: #7D99ED !important;
+      margin-left: 20px;
+    }
+
+    #create_button:hover {
+      background-color: #7354F4 !important;
+      transition: 0.3s;
+    }
+
+    .card-title,
+    .card-text {
+      font-family: 'Gugi', cursive;
+    }
+
+    .card-text {
+      color: white !important;
+    }
+
+    .card-text-span {
+      color: black;
+      opacity: 1;
+      position: absolute;
+      top: 66%;
+      left: 30px;
+    }
+
+    .card-text:hover {
+      color: #7354F4 !important;
+      transition: 0.2s;
+    }
+
+    .card-text:hover .card-text-span {
+      opacity: 0;
+      transition: 0.2s;
+    }
+
+    .where {
+      border: 3px solid black;
+      padding-left: 5px;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      position: relative;
+      top: 30px;
+    }
+
+    .card-img-top {
+      height: 230px;
+    }
+
+    .background {
+      background-image: url("/images/grass.png");
+      background-position: center;
+      background-size: cover;
+
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+
+<body>
+  <%- include("../menu"); %>
+  <div class="background"></div>
+  <button class="top-button" onclick="topFunction();">TOP</button>
+
+  <button type="button" id="create_button" class="btn btn-primary" onclick="location.href='/api/play/new'">등록</button>
+  <div class="row row-cols-1 row-cols-md-4">
+
+
+
+    <% var rand = 0; %>
+    <%result.forEach(music => { %>
+    <% if(rand >= 12) rand = 0; %>
+    <% rand=rand+1; %>
+    <div class="col mb-4">
+
+      <!-- Card Light -->
+      <div class="card">
+
+        <div class="view overlay">
+          <!-- <img class="card-img-top" src="/images/bg<?php echo rand(1,7); ?>.png" alt="Card image cap"> -->
+          <img class="card-img-top" src="/images/bg<%= rand %>.png" alt="Card image cap">
+
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Title -->
+          <h4 class="card-title"> <%= music.sentence %> </h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text"><%= music.answer %> <span class="card-text-span">Mouse on me</span> </p>
+
+
+
+          <div class="where">
+            <p class="card-title">작품명 : <%= music.where %></p>
+          </div>
+
+          <div class="name_text_container">
+            <span></span>
+            <p class="name_text"><%= user.name %></p>
+          </div>
+
+          <!-- Link -->
+          <a href="/api/play/<%= music._id %>" class="black-text d-flex justify-content-end">
+            <h5> <i class="fas fa-angle-double-right"></i></h5>
+          </a>
+
+        </div>
+
+      </div>
+      <!-- Card Light -->
+    </div>
+    <% }); %>
+  </div>
+
+  <%- include("../footer"); %>
+
+  <script>
+    //var imageList = ['/images/Arae.png', '/images/kakao.png'];
+    //$(document).ready(function () {
+    // var index = getRandomNumber();
+    // $('#img').attr('src', imageList[index]);
+    //});
+    function topFunction() {
+
+      $('html, body').animate({
+        scrollTop: 0
+      }, 'slow');
+    }
+  </script>
+</body>
+
+</html>

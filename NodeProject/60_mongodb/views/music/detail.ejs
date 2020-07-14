@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../header"); %>
+  <style>
+    #createForm {
+      width: 90%;
+      height: 100%;
+      padding: 5px;
+      margin: 0 auto;
+      background: linear-gradient(#e66465, #9198e5);
+    }
+
+    .form-wrap {
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <%- include("../menu"); %>
+
+
+  <div id="createForm">
+    <div class="form-wrap">
+      <!-- Material input -->
+      <div class="md-form">
+        <input type="text" id="singer" value="<%= result.sentence %>" class="form-control" readonly>
+        <label for="sentence">문장</label>
+      </div>
+
+      <div class="md-form">
+        <input type="text" id="title" value="<%= result.answer %>" class="form-control" readonly>
+        <label for="answer">Title</label>
+      </div>
+
+      <div class="md-form">
+        <input type="text" id="title" value="<%= result.where %>" class="form-control" readonly>
+        <label for="where">where</label>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="location.href='/api/play'">목록</button>
+      <button type="button" class="btn btn-primary"
+        onclick="location.href='/api/play/<%= result._id %>/edit'">수정</button>
+      <button id="deleteBtn" type="button" class="btn btn-primary">삭제</button>
+    </div>
+  </div>
+
+  <%- include("../footer"); %>
+
+  <script>
+    $(function () {
+      // 삭제
+      $("#deleteBtn").on("click", () => {
+        const result = confirm("삭제하시겠습니까?");
+        if (result) {
+          $.ajax({
+            url: "/api/play/<%= result._id %>",
+            type: "DELETE"
+          }).done(() => {
+            location.href = "/api/play/";
+          }).fail((request, status, error) => {
+            alert(request.responseText);
+          });
+        } else {
+          console.log("삭제 취소");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

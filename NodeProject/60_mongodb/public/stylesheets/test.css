@@ -1,0 +1,118 @@
+body {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+#createForm {
+    width: 90%;
+    height: 100%;
+    padding: 5px;
+    margin: 0 auto;
+    background: linear-gradient(#e66465, #9198e5);
+}
+
+.form-wrap {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+.tips {
+    font-size: 9pt;
+}
+
+.tips-border {
+    width: 100%;
+    height: 2px;
+    background-color: gray;
+    margin-bottom: 20px;
+}
+
+.md-form {
+    margin: 30px 0;
+}
+
+#create_button {
+    width: 100px;
+    transition: 0.3s;
+    background-color: #7D99ED !important;
+}
+
+#create_button:hover {
+    background-color: #7354F4 !important;
+    transition: 0.3s;
+}
+
+
+/* 여기서부터 CARD */
+
+#card-container {
+    margin-bottom: 30px;
+}
+
+
+/* .card-title strong:hover {
+    border-bottom: 2px solid gray;
+    padding-bottom: 6px;
+    transition: 0.3s;
+} */
+
+.title_line {
+    display: inline-block;
+    position: relative;
+    background-color: rgb(0, 163, 0);
+    width: 16%;
+    height: 4px;
+    border-radius: 30px;
+    margin: 5px 0;
+}
+
+/* 모바일에서 */
+@media screen and (max-width: 550px) {
+    body {
+        background-image: url("/images/wooden.jpg");
+    }
+
+    /* .card-text {
+        font-size: 0.8rem !important;
+    } */
+
+    #createForm {
+        width: 93%;
+        height: 100%;
+        padding: 5px;
+        margin: 0 auto;
+        background: linear-gradient(#e66465, #9198e5);
+    }
+}
+
+/* 다른 웹에서 */
+@media screen and (min-width: 550px) {
+    body {
+        background-image: url("/images/wooden.jpg");
+    }
+
+    .card-title {
+        font-size: 3rem;
+    }
+
+    .card-text {
+        font-size: 1.4rem !important;
+    }
+
+    #card-container {
+        margin-bottom: 100px;
+    }
+
+    #card-writer {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+    }
+
+    .card-img-top {
+        height: 400px;
+    }
+
+
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../header"); %>
+
+<body>
+  <%- include("../menu"); %>
+
+  <button type="button" class="btn btn-primary" onclick="location.href='/api/movie/new'">등록</button>
+  <div class="row row-cols-1 row-cols-md-4">
+
+    <%result.forEach(movie => { %>
+    <div class="col mb-4">
+
+      <!-- Card Light -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+            alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Social shares button -->
+          <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+          <!-- Title -->
+          <h4 class="card-title"> <%= movie.title %> </h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text"><%= movie.director %></p>
+          <!-- Link -->
+          <a href="/api/movie/<%= movie._id %>" class="black-text d-flex justify-content-end">
+            <h5>Click me <i class="fas fa-angle-double-right"></i></h5>
+          </a>
+
+        </div>
+
+      </div>
+      <!-- Card Light -->
+    </div>
+    <% }); %>
+  </div>
+
+  <%- include("../footer"); %>
+</body>
+
+</html>
